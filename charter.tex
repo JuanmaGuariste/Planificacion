@@ -1,6 +1,6 @@
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
-codirector, % Uncomment to add a codirector to the title page
+%codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
 
@@ -18,18 +18,18 @@ codirector, % Uncomment to add a codirector to the title page
 \autor{Ing. Juan Manuel Guariste}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Título y Nombre del director}
-\pertenenciaDirector{pertenencia} 
-\codirector{Título y Nombre del codirector} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
-\pertenenciaCoDirector{FIUBA}
+\director{Ing. Juan Manuel Cruz}
+\pertenenciaDirector{FIUBA} 
+\codirector{} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
+%\pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Ing. Bernardo Martínez Sáenz}
+\empresaCliente{Deitres S.A.}
  
 \fechaINICIO{20 de agosto de 2024}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlan{8 de octubre de 2024} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2024}	%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{15 de mayo de 2025}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -58,7 +58,7 @@ codirector, % Uncomment to add a codirector to the title page
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 5 inclusive                & {día} de {mes} de 202X \\ \hline
+1      & Se completa hasta el punto 5 inclusive                & 3 de septiembre de 2024 \\ \hline
 %2      & Se completa hasta el punto 9 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -84,7 +84,11 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de una caldera industrial}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ XXX}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+%Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de una caldera industrial}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{U\$D 1000}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+
+%Se adjunta a esta acta la planificación inicial.
+
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de un prototipo para el control eficiente y remoto de las luminarias, permitiendo una comunicación efectiva y robusta entre ellas y una gestión centralizada. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de U\$D 1000, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -104,6 +108,79 @@ Se adjunta a esta acta la planificación inicial.
 
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
+
+El proyecto se desarrolla en el marco de la Carrera de Especialización en Sistemas Embebidos y está alineado con las necesidades de Deitres S.A., empresa donde el autor de este proyecto trabaja como ingeniero de desarrollo de hardware y firmware. Deitres S.A. se especializa en crear soluciones tecnológicas e innovadoras para la seguridad electrónica, domótica y la industria. Este proyecto aborda la ineficiencia en la gestión de la iluminación pública, un problema crítico en las ciudades modernas donde el control efectivo y el ahorro energético son esenciales. Muchas ciudades enfrentan dificultades para mantener un control preciso sobre sus redes de iluminación pública, lo que genera altos costos operativos, de mantenimiento y de consumo energético.
+
+Actualmente, existen diversas soluciones para la gestión de la iluminación pública, desde sistemas básicos de encendido y apagado programado hasta tecnologías más avanzadas que permiten el control remoto y la automatización. Sin embargo, muchas de estas soluciones tienen limitaciones en términos de escalabilidad, robustez de comunicación y capacidad de integración con otras tecnologías.
+
+La solución propuesta es el desarrollo de CityLight, un sistema de luminarias inteligentes que utiliza una red MESH en 915 MHz, integrado con un protocolo propio de la empresa, y con conectividad a internet tanto por WiFi como por red celular. CityLight permitirá un control eficiente y remoto de las luminarias, facilitando una comunicación robusta y efectiva entre ellas y una gestión centralizada. En caso de que un CityLight deba comunicar un evento o el estado de una luminaria y no disponga de conexión a internet, podrá utilizar la red MESH para comunicarse con otro CityLight que actúe como gateway. Esto no solo garantiza un sistema de comunicación robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que usaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red MESH a otros CityLight con otra forma de conexión, como WiFi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, basta con que solo un CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red MESH.
+
+
+El cliente de este proyecto valora la aplicación de la red MESH en 915MHz debido a su éxito en otros productos desarrollados por la empresa. La integración de esta red MESH distingue al proyecto CityLight de otras soluciones, ofreciendo una comunicación más robusta y eficiente entre las luminarias y mejorando la escalabilidad del sistema. Este proyecto es crucial para Deitres S.A. porque permitirá expandir el uso de una tecnología ya validada y apreciada, reforzando su posición en el mercado de soluciones para la gestión de infraestructuras urbanas.
+
+El sistema dispondrá de las funcionalidades mencionadas a continuación.
+
+\begin{itemize}
+		\item \textbf{Conector NEMA:} Dispondrá de una interfaz física NEMA para conectarse en las luminarias.
+        \item \textbf{Medición de intensidad lumínica ambiental mediante sensor fotosensible (fotocélula)}: Permitirá ajustar la iluminación en función de las condiciones de luz externa.
+        \item \textbf{Actuación sobre la intensidad lumínica de la luminaria mediante circuito dimmer}.
+        \item \textbf{Medición de consumo de corriente AC}: Para monitorear el consumo energético de las luminarias.
+        \item \textbf{Detección de presencia de tensión AC}: Para asegurar el correcto funcionamiento del sistema.
+        \item \textbf{Utilización de circuito adaptador de señales para control de la luminaria}.
+        \item \textbf{Control de habilitación/deshabilitación de suministro de corriente a la luminaria mediante accionamiento de relé}.
+        \item \textbf{Interfaz de comunicación}: El sistema podrá recibir comandos a través de interfaces WiFi, celular o señales de radiofrecuencia utilizando un protocolo propio desarrollado por Deitres S.A. Se le podrá consultar el estado de la luminaria y actuar sobre ella.
+        \item \textbf{Red MESH}: Implementación de la red MESH en 915MHz (ya existente en otros productos de la empresa) que permita la comunicación entre dispositivos CityLight, facilitando la formación de una red robusta y expansible. La implementación de la red MESH permitirá a aquellos dispositivos CityLight que no tengan conexión a internet, recurrir a algún “vecino” en 915MHz que disponga de internet y oficie de gateway.
+        \item \textbf{Geo-posicionamiento de luminarias}: Utilización de GPS para la localización precisa de cada unidad.
+        \item \textbf{Posibilidad de operar con alimentación alterna o a batería}.
+\end{itemize}
+
+En la figura \ref{fig:diagBloquesGeneral} se presenta un diagrama en bloques funcional del sistema.
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.8\textwidth]{./Figuras/diagBloquesGeneral.png}
+\caption{Diagrama en bloques del sistema.}
+\label{fig:diagBloquesGeneral}
+\end{figure}
+
+
+El sistema consistirá en tres placas de circuito impreso (PCBs) interconectadas que se montarán en conjunto, una encima de la otra (por razones de tamaño), dentro de una carcasa ubicada sobre las luminarias, conectadas a ellas mediante un conector NEMA. Estas placas tendrán las siguientes funciones:
+ 
+ 
+    \begin{itemize}
+        \item \textbf{Primer PCB:}
+        \begin{itemize}
+            \item Conexión con el conector NEMA.
+            \item Conversión de señales AC a DC.
+            \item Medición de corriente AC.
+            \item Relé para la activación/desactivación del suministro de corriente.
+            \item Conversores DC/DC.
+        \end{itemize}
+        \item \textbf{Segundo PCB:}
+        \begin{itemize}
+            \item Reguladores lineales.
+            \item Microcontrolador (MCU).
+            \item Transceptor RF con amplificador de potencia (para implementar el protocolo MESH en 915MHz propietario).
+            \item Circuito DIMMER para regular la intensidad de la iluminación.
+            \item Photocontrol para medir la intensidad de luz ambiental.
+            \item GPS para geo-posicionamiento.
+            \item Circuitería de adaptación para ADC, LEDs, y programador para el MCU.
+        \end{itemize}
+        \item \textbf{Tercer PCB:}
+        \begin{itemize}
+            \item Módulos de comunicación celular (3G/4G).
+            \item Módulo WiFi.
+            \item LEDs indicadores.
+            \item Conexión para batería y cargador para la misma.
+        \end{itemize}
+    \end{itemize}
+
+
+
+
+
+
+
 
 \begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección. En cada entrega parcial deben eliminar los comandos begin y end del bloque consigna de las secciones que hayan completado.
 El objetivo es que el lector, en una o dos páginas, exponga de qué se trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
