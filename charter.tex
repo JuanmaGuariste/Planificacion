@@ -113,10 +113,10 @@ El proyecto se desarrolla en el marco de la Carrera de Especialización en Siste
 
 Actualmente, existen diversas soluciones para la gestión de la iluminación pública, desde sistemas básicos de encendido y apagado programado hasta tecnologías más avanzadas que permiten el control remoto y la automatización. Sin embargo, muchas de estas soluciones tienen limitaciones en términos de escalabilidad, robustez de comunicación y capacidad de integración con otras tecnologías.
 
-La solución propuesta es el desarrollo de CityLight, un sistema de luminarias inteligentes que utiliza una red MESH en 915 MHz, integrado con un protocolo propio de la empresa, y con conectividad a internet tanto por WiFi como por red celular. CityLight permitirá un control eficiente y remoto de las luminarias, facilitando una comunicación robusta y efectiva entre ellas y una gestión centralizada. En caso de que un CityLight deba comunicar un evento o el estado de una luminaria y no disponga de conexión a internet, podrá utilizar la red MESH para comunicarse con otro CityLight que actúe como gateway. Esto no solo garantiza un sistema de comunicación robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que usaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red MESH a otros CityLight con otra forma de conexión, como WiFi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, basta con que solo un CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red MESH.
+La solución propuesta es el desarrollo de CityLight, un sistema de luminarias inteligentes que utiliza una red mesh en 915 MHz, integrado con un protocolo propio de la empresa, y con conectividad a internet tanto por Wi-Fi como por red celular. CityLight permitirá un control eficiente y remoto de las luminarias, facilitando una comunicación robusta y efectiva entre ellas y una gestión centralizada. En caso de que el dispositivo deba comunicar un evento o el estado de una luminaria y no disponga de conexión a internet, podrá utilizar la red mesh para comunicarse con otro CityLight que actúe como gateway. Esto no solo garantiza un sistema de comunicación robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que usaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red mesh a otros CityLight con otra forma de conexión, como Wi-Fi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, basta con que solo un CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red mesh.
 
 
-El cliente de este proyecto valora la aplicación de la red MESH en 915MHz debido a su éxito en otros productos desarrollados por la empresa. La integración de esta red MESH distingue al proyecto CityLight de otras soluciones, ofreciendo una comunicación más robusta y eficiente entre las luminarias y mejorando la escalabilidad del sistema. Este proyecto es crucial para Deitres S.A. porque permitirá expandir el uso de una tecnología ya validada y apreciada, reforzando su posición en el mercado de soluciones para la gestión de infraestructuras urbanas.
+El cliente de este proyecto valora la aplicación de la red mesh en 915 MHz debido a su éxito en otros productos desarrollados por la empresa. La integración de esta red distingue al proyecto CityLight de otras soluciones, ofreciendo una comunicación más robusta y eficiente entre las luminarias y mejorando la escalabilidad del sistema. Este proyecto es crucial para Deitres S.A. porque permitirá expandir el uso de una tecnología ya validada y apreciada, reforzando su posición en el mercado de soluciones para la gestión de infraestructuras urbanas.
 
 El sistema dispondrá de las funcionalidades mencionadas a continuación.
 
@@ -128,8 +128,8 @@ El sistema dispondrá de las funcionalidades mencionadas a continuación.
         \item \textbf{Detección de presencia de tensión AC}: Para asegurar el correcto funcionamiento del sistema.
         \item \textbf{Utilización de circuito adaptador de señales para control de la luminaria}.
         \item \textbf{Control de habilitación/deshabilitación de suministro de corriente a la luminaria mediante accionamiento de relé}.
-        \item \textbf{Interfaz de comunicación}: El sistema podrá recibir comandos a través de interfaces WiFi, celular o señales de radiofrecuencia utilizando un protocolo propio desarrollado por Deitres S.A. Se le podrá consultar el estado de la luminaria y actuar sobre ella.
-        \item \textbf{Red MESH}: Implementación de la red MESH en 915MHz (ya existente en otros productos de la empresa) que permita la comunicación entre dispositivos CityLight, facilitando la formación de una red robusta y expansible. La implementación de la red MESH permitirá a aquellos dispositivos CityLight que no tengan conexión a internet, recurrir a algún “vecino” en 915MHz que disponga de internet y oficie de gateway.
+        \item \textbf{Interfaz de comunicación}: El sistema podrá recibir comandos a través de interfaces Wi-Fi, celular o señales de radiofrecuencia utilizando un protocolo propio desarrollado por Deitres S.A. Se le podrá consultar el estado de la luminaria y actuar sobre ella.
+        \item \textbf{Red mesh}: Implementación de la red mesh en 915 MHz (ya existente en otros productos de la empresa) que permita la comunicación entre dispositivos CityLight, facilitando la formación de una red robusta y expansible. La implementación de la red mesh permitirá a aquellos dispositivos CityLight que no tengan conexión a internet, recurrir a algún “vecino” en 915 MHz que disponga de internet y oficie de gateway.
         \item \textbf{Geo-posicionamiento de luminarias}: Utilización de GPS para la localización precisa de cada unidad.
         \item \textbf{Posibilidad de operar con alimentación alterna o a batería}.
 \end{itemize}
@@ -160,7 +160,7 @@ El sistema consistirá en tres placas de circuito impreso (PCBs) interconectadas
         \begin{itemize}
             \item Reguladores lineales.
             \item Microcontrolador (MCU).
-            \item Transceptor RF con amplificador de potencia (para implementar el protocolo MESH en 915MHz propietario).
+            \item Transceptor RF con amplificador de potencia (para implementar el protocolo mesh en 915 MHz propietario).
             \item Circuito DIMMER para regular la intensidad de la iluminación.
             \item Photocontrol para medir la intensidad de luz ambiental.
             \item GPS para geo-posicionamiento.
@@ -169,7 +169,7 @@ El sistema consistirá en tres placas de circuito impreso (PCBs) interconectadas
         \item \textbf{Tercer PCB:}
         \begin{itemize}
             \item Módulos de comunicación celular (3G/4G).
-            \item Módulo WiFi.
+            \item Módulo Wi-Fi.
             \item LEDs indicadores.
             \item Conexión para batería y cargador para la misma.
         \end{itemize}
@@ -220,14 +220,6 @@ Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprend
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} % este comando se debe borrar para la entrega, junto con la contraparte \end{consigna}{red} 
-\textbf{Nota importante:} borrar esto y todas las consignas en color rojo antes de entregar este documento). Esto se hace eliminando el par de comandos que forman el bloque consigna, \verb!\begin{consigna}{red}! y \verb!\end{consigna}{red}! del código. 
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos. Si se considera que una persona cumple dos o más roles, entonces \textbf{solo dejarla en el rol más importante}. 
-
-Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente. Si una persona es el Responsable, \textbf{no debe ser colocado también como miembro del equipo}.
-
-
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
 %\label{tab:interesados}
@@ -235,45 +227,23 @@ Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+%Auspiciante   &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	&CEO de Deitres S.A.      	\\ \hline
+%Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
+%Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director del Trabajo Final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+%Equipo        & miembro1 \newline 
+%				miembro2          &              	&        	\\ \hline
+%Opositores    &                   &              	&        	\\ \hline
+Usuario final &Municipalidades y empresas de infraestructura urbana         &-              	&-        	\\ \hline
 \end{tabularx}
 \end{table}
-
-El Director suele ser uno de los orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
-\begin{itemize}
-	\item Orientador: la Dra. Ing. María Gómez es experta en la temática y va a ayudar con la definición de los requerimientos y el desarrollo del firmware del embebido.
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\end{itemize}
-
-\end{consigna} % este comando se debe borrar para la entrega, junto con la contraparte \begin{consigna}{red}
-
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que continúe con la idea de la frase ``el propósito de este proyecto es...'' (omitir la frase, ya que está en el título de la sección).
-\end{consigna}
+Mejorar la eficiencia en la gestión de la iluminación pública, reducir los costos operativos y de mantenimiento, y optimizar el consumo energético. Se busca desarrollar un sistema de luminarias inteligentes que permita un control preciso y remoto, garantizando una comunicación robusta y escalable entre las luminarias mediante una red mesh, con algunos nodos actuando como gateway.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
