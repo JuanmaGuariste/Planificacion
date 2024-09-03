@@ -113,9 +113,7 @@ El proyecto está alineado con las necesidades de Deitres S.A., empresa donde el
 
 Actualmente, existen diversas soluciones para la gestión de la iluminación pública, desde sistemas básicos de encendido y apagado programado hasta tecnologías más avanzadas que permiten el control remoto y la automatización. Sin embargo, muchas de estas soluciones tienen limitaciones en términos de escalabilidad, robustez de comunicación y capacidad de integración con otras tecnologías.
 
-La solución propuesta es el desarrollo de hardware y firmware del CityLight, un prototipo de luminaria inteligente que se conecta a internet a través de Wi-Fi y redes celulares. Estos dispositivos, una vez instalados, interactúan entre sí formando una red con topología mesh en 915 MHz, utilizando un protocolo propio desarrollado por la empresa. Si un dispositivo necesita comunicar un evento o el estado de una luminaria y no cuenta con conexión a internet, podrá utilizar esta red mesh para conectarse con otro CityLight que funcione como gateway. Esto no solo garantiza un sistema de comunicación eficiente y robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que utilizaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red mesh, conectándose a otros CityLight con otras formas de conexión, como Wi-Fi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, bastará con que un solo CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red mesh.
-
-El cliente de este proyecto valora la aplicación de la red mesh en 915 MHz debido a su éxito en otros productos desarrollados por la empresa. La integración de esta red distingue al proyecto CityLight de otras soluciones, ofreciendo una comunicación más robusta y eficiente entre las luminarias y mejorando la escalabilidad del sistema. Este proyecto es crucial para Deitres S.A. porque permitirá expandir el uso de una tecnología ya validada y apreciada, reforzando su posición en el mercado de soluciones para la gestión de infraestructuras urbanas.
+La solución propuesta es el CityLight, un prototipo de luminaria inteligente que se conecta a internet a través de Wi-Fi y redes celulares. Estos dispositivos, una vez instalados, interactúan entre sí formando una red con topología mesh en 915 MHz, utilizando un protocolo propio desarrollado por la empresa e implementado en otros de sus productos. Si un dispositivo necesita comunicar un evento o el estado de una luminaria y no cuenta con conexión a internet, podrá utilizar esta red mesh para conectarse con otro CityLight que funcione como gateway. Esto no solo garantiza un sistema de comunicación eficiente y robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que utilizaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red mesh, conectándose a otros CityLight con otras formas de conexión, como Wi-Fi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, bastará con que un solo CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red mesh.
 
 A continuación se detallan las funcionalidades específicas que se implementarán en el prototipo de luminaria inteligente, CityLight:
 
@@ -125,10 +123,10 @@ A continuación se detallan las funcionalidades específicas que se implementar�
         \item \textbf{Actuación sobre la intensidad lumínica de la luminaria mediante circuito dimmer}: Facilitará el ajuste de la intensidad de la luz según las necesidades.
         \item \textbf{Medición de consumo de corriente AC}: Para monitorear el consumo energético de las luminarias.
         \item \textbf{Detección de presencia de tensión AC}: Para asegurar el correcto funcionamiento del sistema.
-        \item \textbf{Utilización de circuito adaptador de señales para control de la luminaria}: Adaptará las se˜nales de control.
+        \item \textbf{Utilización de circuito adaptador de señales para control de la luminaria}: Adaptará las señales de control.
         \item \textbf{Control de habilitación/deshabilitación de suministro de corriente a la luminaria mediante accionamiento de relé}: Permitirá encender o apagar las luminarias de manera automatizada o por comandos enviados remotamente.
         \item \textbf{Interfaz de conexión a internet}: El sistema podrá recibir comandos y enviar reportes a través de interfaces Wi-Fi y celular. Se le podrá consultar el estado de la luminaria y actuar sobre ella.
-        \item \textbf{Red mesh}: Implementación de la red mesh en 915 MHz (ya existente en otros productos de la empresa) que permita la comunicación entre dispositivos CityLight. 
+        \item \textbf{Red mesh}: Implementación de la red mesh en 915 MHz que permita la comunicación entre dispositivos CityLight. 
         \item \textbf{Geo-posicionamiento de luminarias}: Utilización de GPS para la localización precisa de cada unidad.
         \item \textbf{Posibilidad de operar con alimentación alterna o a batería}:  Asegurará la operación del sistema bajo diversas condiciones de suministro energético.
 \end{itemize}
@@ -142,79 +140,7 @@ En la figura \ref{fig:diagBloquesGeneral} se presenta un diagrama en bloques del
 \label{fig:diagBloquesGeneral}
 \end{figure}
 
-
-El sistema consistirá en tres placas de circuito impreso (PCBs) interconectadas que se montarán en conjunto, una encima de la otra (por razones de tamaño), dentro de una carcasa ubicada sobre las luminarias, conectadas a ellas mediante un conector NEMA. Estas placas tendrán las siguientes funciones:
- 
- 
-    \begin{itemize}
-        \item \textbf{Primer PCB:}
-        \begin{itemize}
-            \item Conexión con el conector NEMA.
-            \item Conversión de señales AC a DC.
-            \item Medición de corriente AC.
-            \item Relé para la activación/desactivación del suministro de corriente.
-            \item Conversores DC/DC.
-        \end{itemize}
-        \item \textbf{Segundo PCB:}
-        \begin{itemize}
-            \item Reguladores lineales.
-            \item Microcontrolador (MCU).
-            \item Transceptor RF con amplificador de potencia (para implementar el protocolo mesh en 915 MHz propietario).
-            \item Circuito DIMMER para regular la intensidad de la iluminación.
-            \item Photocontrol para medir la intensidad de luz ambiental.
-            \item GPS para geo-posicionamiento.
-            \item Circuitería de adaptación para ADC, LEDs, y programador para el MCU.
-        \end{itemize}
-        \item \textbf{Tercer PCB:}
-        \begin{itemize}
-            \item Módulos de comunicación celular (3G/4G).
-            \item Módulo Wi-Fi.
-            \item LEDs indicadores.
-            \item Conexión para batería y cargador para la misma.
-        \end{itemize}
-    \end{itemize}
-
-
-
-
-
-
-
-
-\begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección. En cada entrega parcial deben eliminar los comandos begin y end del bloque consigna de las secciones que hayan completado.
-El objetivo es que el lector, en una o dos páginas, exponga de qué se trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
-
-Se debe introducir el contexto del proyecto, el estado del arte en la temática, describir la propuesta de valor, cuál es el problema que atiende y cuál es la solución que se propone. Se debe dar una descripción funcional de la solución que incluya un diagrama en bloques.
-
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
-\begin{itemize}
-	\item ¿Cuál es el contexto del proyecto, es un emprendimiento personal, un proyecto para una empresa, es parte del programa de vinculación con empresas del posgrado?
-	\item ¿Existen o aplican condiciones especiales al proyecto, financiamiento de algún programa público o privado, acuerdos de confidencialidad, acuerdos sobre la propiedad intelectual de los entregables u otros?
-	\item ¿Cómo se compara la solución propuesta con el estado del arte en el campo de aplicación? ¿En qué aspectos destaca?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está la solución que se propone?
-	\item ¿Cuáles son las características del cliente (el adoptante de los entregables del proyecto) qué valora, qué necesita?
-	\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
-
-Las figuras se deben mencionar en el texto ANTES de que aparezcan con una frase como la siguiente: ``En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''.  La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
-
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.65\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema.}
-\label{fig:diagBloques}
-\end{figure}
-
-\vspace{25px}
-
-El tamaño del texto en TODAS las figuras debe ser adecuado \textbf{para que NO pase lo que ocurre en la figura \ref{fig:diagBloques}}, donde el lector debe esforzarse para poder leer el texto. 
-
-Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama. Se recomienda evitar colores primarios (como rojo, verde o cyan) y usar la gama de colores pastel.
-\end{consigna}
+El cliente de este proyecto valora la aplicación de la red mesh en 915 MHz debido a su éxito en otros productos desarrollados por la empresa. La integración de esta red distingue al proyecto CityLight de otras soluciones, ofreciendo una comunicación más robusta y eficiente entre las luminarias y mejorando la escalabilidad del sistema. Este proyecto es crucial para Deitres S.A. porque permitirá expandir el uso de una tecnología ya validada y apreciada, reforzando su posición en el mercado de soluciones para la gestión de infraestructuras urbanas.
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
@@ -242,59 +168,42 @@ Usuario final &Municipalidades y empresas de infraestructura urbana         &-  
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-Mejorar la eficiencia en la gestión de la iluminación pública, reducir los costos operativos y de mantenimiento, y optimizar el consumo energético. Se busca desarrollar un sistema de luminarias inteligentes que permita un control preciso y remoto, garantizando una comunicación robusta y escalable entre las luminarias mediante una red mesh, con algunos nodos actuando como gateway.
+Mejorar la eficiencia en la gestión de la iluminación pública, reducir los costos operativos y de mantenimiento, y optimizar el consumo energético. Se busca desarrollar un sistema de luminarias inteligentes con conexión a internet que permita un control preciso y remoto, garantizando una comunicación robusta y escalable entre las luminarias mediante una red mesh.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-Este proyecto incluye el diseño de circuito impreso y desarrollo de fimrware que permita:
-	\begin{itemize}
-		\item Conexión con conector NEMA.
-		\item Adquisición de señales y control de la luminaria.
-		\item Implementar interfaces de conexión a internet mediante Wi-Fi y red celular.
-		\item Geolocalización mediante modulo GPS.
-		\item Implementación de red mesh en 915 MHz.
-	\end{itemize}	
-
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
-
-Se refiere al trabajo que se va a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto. Por ejemplo:
-
-El proyecto incluye:
+El proyecto incluye el diseño de circuito impreso y desarrollo de firmware que permita:
 \begin{itemize}
-	\item Ítem 1.
-	\item Ítem 2.
-		\begin{itemize}
-		\item Subítem 1.
-		\item Subítem 2.
-		\item ...
-		\end{itemize}
-	\item ...
-	
+	\item Conexión con el conector NEMA.
+	\item Adquisición de señales y control de la luminaria.
+	\item Implementar interfaces de conexión a internet mediante Wi-Fi y red celular.
+	\item Geolocalización mediante modulo GPS.
+	\item Implementación de red mesh en 915 MHz.
+	\item Integración del CityLight con el software de control y gestión existente en la empresa.
+\end{itemize}	
+
+El proyecto no incluye:
+\begin{itemize}
+	\item Desarrollo de nuevo software de control y gestión para los dispositivos.
+	\item Pruebas de campo del prototipo.
+	\item Certificación del prototipo ante organismos regulatorios nacionales y/o internacionales.
 \end{itemize}
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
 
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+
+Para el desarrollo del presente proyecto se supone que: 
 
 \begin{itemize}
-	\item Supuesto 1.
-	\item Supuesto 2.
-	\item ...
+	\item El Ing. Juan Manuel Guariste, responsable del proyecto, y el Ing. Bernardo Martínez Sáenz, cliente del proyecto, estan de acuerdo con los requerimientos y 		alcance planteado en este documento.
+	\item El presupuesto necesario para el desarrollo estará a cargo de la empresa Deitres S. A.
+	\item El Ing. Juan Manuel Guariste dispondrá eventualmente de tiempo de la jornada laboral para llevar a cabo el proyecto en el plazo especificado en el acta de constitución.
+	\item Se conseguirán todos los componentes necesarios para el desarrollo en tiempo y forma.	
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
