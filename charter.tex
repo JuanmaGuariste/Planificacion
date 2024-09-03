@@ -113,31 +113,31 @@ El proyecto está alineado con las necesidades de Deitres S.A., empresa donde el
 
 Actualmente, existen diversas soluciones para la gestión de la iluminación pública, desde sistemas básicos de encendido y apagado programado hasta tecnologías más avanzadas que permiten el control remoto y la automatización. Sin embargo, muchas de estas soluciones tienen limitaciones en términos de escalabilidad, robustez de comunicación y capacidad de integración con otras tecnologías.
 
-La solución propuesta es el desarrollo de CityLight, un prototipo de luminaria inteligente con conexión a internet tanto por Wi-Fi como por interfaz celular. Los dispositivos CityLight instalados formarán un sistema que se comunica mediante una red mesh en 915 MHz utilizando un protocolo propio de la empresa. Estos dispositivos permitirán un control eficiente y remoto de las luminarias, facilitando una comunicación robusta y efectiva entre ellas y una gestión centralizada. En caso de que un dispositivo deba comunicar un evento o el estado de una luminaria y no disponga de conexión a internet, podrá utilizar la red mesh para comunicarse con otro CityLight que actúe como gateway. Esto no solo garantiza un sistema de comunicación robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que usaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red mesh a otros CityLight con otra forma de conexión, como Wi-Fi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, basta con que solo un CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red mesh.
+La solución propuesta es el desarrollo de hardware y firmware del CityLight, un prototipo de luminaria inteligente que se conecta a internet a través de Wi-Fi y redes celulares. Estos dispositivos, una vez instalados, interactúan entre sí formando una red con topología mesh en 915 MHz, utilizando un protocolo propio desarrollado por la empresa. Si un dispositivo necesita comunicar un evento o el estado de una luminaria y no cuenta con conexión a internet, podrá utilizar esta red mesh para conectarse con otro CityLight que funcione como gateway. Esto no solo garantiza un sistema de comunicación eficiente y robusto, sino que también ofrece la ventaja de superar una eventual obsolescencia tecnológica. Por ejemplo, si en una ciudad se desmantelan las redes celulares 3G, los CityLight que utilizaban esa interfaz de conexión a internet podrán seguir comunicando sus eventos a través de la red mesh, conectándose a otros CityLight con otras formas de conexión, como Wi-Fi. Además, si surge una nueva tecnología de conexión a internet, como la satelital o 5G, bastará con que un solo CityLight disponga de esa interfaz para que pueda actuar como gateway para los demás nodos de la red mesh.
 
 El cliente de este proyecto valora la aplicación de la red mesh en 915 MHz debido a su éxito en otros productos desarrollados por la empresa. La integración de esta red distingue al proyecto CityLight de otras soluciones, ofreciendo una comunicación más robusta y eficiente entre las luminarias y mejorando la escalabilidad del sistema. Este proyecto es crucial para Deitres S.A. porque permitirá expandir el uso de una tecnología ya validada y apreciada, reforzando su posición en el mercado de soluciones para la gestión de infraestructuras urbanas.
 
-En la figura \ref{fig:diagBloquesGeneral} se presenta un diagrama en bloques del sistema propuesto en el que se observan las distintas funcionalidades a implementar.
+A continuación se detallan las funcionalidades específicas que se implementarán en el prototipo de luminaria inteligente, CityLight:
 
 \begin{itemize}
-		\item \textbf{Conector NEMA:} Dispondrá de una interfaz física NEMA para conectarse a las luminarias.
+		\item \textbf{Conector NEMA:} Dispondrá de una interfaz física NEMA para conectarse a las luminarias, permitiendo una integración estándar con diversos sistemas de iluminación existentes.
         \item \textbf{Medición de intensidad lumínica ambiental mediante sensor fotosensible (fotocélula)}: Permitirá ajustar la iluminación en función de las condiciones de luz externa.
-        \item \textbf{Actuación sobre la intensidad lumínica de la luminaria mediante circuito dimmer}.
+        \item \textbf{Actuación sobre la intensidad lumínica de la luminaria mediante circuito dimmer}: Facilitará el ajuste de la intensidad de la luz según las necesidades.
         \item \textbf{Medición de consumo de corriente AC}: Para monitorear el consumo energético de las luminarias.
         \item \textbf{Detección de presencia de tensión AC}: Para asegurar el correcto funcionamiento del sistema.
-        \item \textbf{Utilización de circuito adaptador de señales para control de la luminaria}.
-        \item \textbf{Control de habilitación/deshabilitación de suministro de corriente a la luminaria mediante accionamiento de relé}.
-        \item \textbf{Interfaz de comunicación}: El sistema podrá recibir comandos a través de interfaces Wi-Fi, celular o señales de radiofrecuencia utilizando un protocolo propio desarrollado por Deitres S.A. Se le podrá consultar el estado de la luminaria y actuar sobre ella.
-        \item \textbf{Red mesh}: Implementación de la red mesh en 915 MHz (ya existente en otros productos de la empresa) que permita la comunicación entre dispositivos CityLight, facilitando la formación de una red robusta y expansible. La implementación de la red mesh permitirá a aquellos dispositivos CityLight que no tengan conexión a internet, recurrir a algún “vecino” en 915 MHz que disponga de internet y oficie de gateway.
+        \item \textbf{Utilización de circuito adaptador de señales para control de la luminaria}: Adaptará las se˜nales de control.
+        \item \textbf{Control de habilitación/deshabilitación de suministro de corriente a la luminaria mediante accionamiento de relé}: Permitirá encender o apagar las luminarias de manera automatizada o por comandos enviados remotamente.
+        \item \textbf{Interfaz de conexión a internet}: El sistema podrá recibir comandos y enviar reportes a través de interfaces Wi-Fi y celular. Se le podrá consultar el estado de la luminaria y actuar sobre ella.
+        \item \textbf{Red mesh}: Implementación de la red mesh en 915 MHz (ya existente en otros productos de la empresa) que permita la comunicación entre dispositivos CityLight. 
         \item \textbf{Geo-posicionamiento de luminarias}: Utilización de GPS para la localización precisa de cada unidad.
-        \item \textbf{Posibilidad de operar con alimentación alterna o a batería}.
+        \item \textbf{Posibilidad de operar con alimentación alterna o a batería}:  Asegurará la operación del sistema bajo diversas condiciones de suministro energético.
 \end{itemize}
 
-En la figura \ref{fig:diagBloquesGeneral} se presenta un diagrama en bloques funcional del sistema.
+En la figura \ref{fig:diagBloquesGeneral} se presenta un diagrama en bloques del sistema propuesto en el que se observan las distintas funcionalidades a implementar. 
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/diagBloquesGeneral.png}
+\includegraphics[width=.9\textwidth]{./Figuras/diagBloquesGeneral.png}
 \caption{Diagrama en bloques del sistema.}
 \label{fig:diagBloquesGeneral}
 \end{figure}
