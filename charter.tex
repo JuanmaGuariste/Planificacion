@@ -211,7 +211,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item El Ing. Juan Manuel Guariste dispondrá eventualmente de tiempo de la jornada laboral para llevar a cabo el proyecto en el plazo especificado en el acta de constitución.
 	\item Se conseguirán todos los componentes necesarios para el desarrollo en tiempo y forma.	
 	%\item Se dispondrá del instrumental de laboratorio adecuado para realizar mediciones al prototipo.
-	\item En caso de no contar con algún conocimiento específico para desarrollar el proyecto, se podrá contar con el apoyo o soporte del cuerpo docente de la especialización
+	\item En caso de no contar con algún conocimiento específico para desarrollar el proyecto, se podrá contar con el apoyo o soporte del cuerpo docente de la especialización.
 \end{itemize}
 
 
@@ -222,11 +222,21 @@ Para el desarrollo del presente proyecto se supone que:
 Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
 
 \begin{enumerate}
-	\item Requerimientos funcionales:
+	\item Requerimientos asociados con el hardware:
 		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
+			\item El sistema debe contar con una interfaz física NEMA de 7 pines para conectarse y comunicarse con las luminarias de alumbrado público.
+			\item La implementación debe ser compatible con una carcasa genérica para luminarias.
+			\item Debe tener la capacidad de medir el consumo de corriente AC de la luminaria conectada.
+			\item Debe ser capaz de detectar la presencia de tensión AC en la luminaria.
+ 			\item El sistema debe poder regular la intensidad lumínica de la luminaria mediante un circuito dimmer.
+			\item Debe contar con un sensor fotosensible para medir la intensidad lumínica ambiental.
+			%\item Debe poseer circuitería de adaptación de señales de control.
+			\item Debe integrar un relé para controlar la habilitación o deshabilitación del suministro de corriente a la luminaria.
+			\item El sistema debe poseer conectividad a internet mediante Wi-Fi.
+			\item El sistema debe poseer conectividad a internet mediante red celular.
+			\item Debe integrar un transceptor en la banda de 915 MHz para establecer y mantener la red mesh de luminarias.
+			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica precisa de cada luminaria.
+			\item El sistema debe ser capaz de operar tanto con alimentación de la red eléctrica como a través de una batería en caso de cortes o fallos en el suministro eléctrico.
 		\end{enumerate}
 	\item Requerimientos de documentación:
 		\begin{enumerate}
