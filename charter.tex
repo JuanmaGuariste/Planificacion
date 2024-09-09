@@ -218,51 +218,46 @@ Para el desarrollo del presente proyecto se supone que:
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
-
 \begin{enumerate}
 	\item Requerimientos asociados con el hardware:
 		\begin{enumerate}
 			\item El sistema debe contar con una interfaz física NEMA de 7 pines para conectarse y comunicarse con las luminarias de alumbrado público.
 			\item La implementación debe ser compatible con una carcasa genérica para luminarias.
-			\item Debe tener la capacidad de medir el consumo de corriente AC de la luminaria conectada.
-			\item Debe ser capaz de detectar la presencia de tensión AC en la luminaria.
- 			\item El sistema debe poder regular la intensidad lumínica de la luminaria mediante un circuito dimmer.
-			\item Debe contar con un sensor fotosensible para medir la intensidad lumínica ambiental.
+			\item  El sistema debe integrar un sensor de efecto hall para medir el consumo de corriente AC de la luminaria conectada.
+			\item El sistema debe detectar la presencia de tensión AC en la luminaria utilizando un optoacoplador.
+ 			\item El sistema debe ser capaz de regular la intensidad lumínica de la luminaria a través de un circuito dimmer.
+			\item Debe contar con un sensor fotosensible que mida la intensidad lumínica ambiental.
 			%\item Debe poseer circuitería de adaptación de señales de control.
-			\item Debe integrar un relé para controlar la habilitación o deshabilitación del suministro de corriente a la luminaria.
-			\item El sistema debe poseer conectividad a internet mediante Wi-Fi.
-			\item El sistema debe poseer conectividad a internet mediante red celular.
-			\item Debe integrar un transceptor en la banda de 915 MHz para establecer y mantener la red mesh de luminarias.
-			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica precisa de cada luminaria.
-			\item El sistema debe ser capaz de operar tanto con alimentación de la red eléctrica como a través de una batería en caso de cortes o fallos en el suministro eléctrico.
+			\item El sistema debe integrar un relé para controlar la habilitación o deshabilitación del suministro de corriente a la luminaria.
+			\item Debe tener conectividad a internet mediante un módulo Wi-Fi.
+			\item Debe tener conectividad a internet mediante red celular.
+			\item El sistema debe integrar un transceptor en la banda de 915 MHz para establecer y mantener la red mesh de luminarias.
+			\item Se debe utilizar un amplificador para el transceptor de 915 MHz que permita aumentar la potencia de salida al menos 20 dBm.
+			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica de cada luminaria y sincronizar datos como la hora y ubicación precisa.
+			\item Debe ser capaz de operar tanto con alimentación de la red eléctrica como a través de una batería en caso de cortes o fallos en el suministro eléctrico. 
+			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automáticamente mediante circuitos analógicos, garantizando la continuidad sin intervención manual.
+			\item Se debe implementar un circuito de carga de batería que permita su recarga segura cuando el sistema esté conectado a la red eléctrica.
+			\item Se debe implementar circuitos de adaptación de señales para medir la tension de batería con el ADC.
 		\end{enumerate}
-	\item Requerimientos de documentación:
-		\begin{enumerate}
-			\item Requerimiento 1.
-			\item Requerimiento 2 (prioridad menor)
+
+	\item Requerimientos asociados con el firmware:
+		\begin{enumerate}		
+		\item El firmware debe estar implementado sobre un sistema operativo de tiempo real (RTOS), asegurando el manejo eficiente de múltiples tareas críticas como control, monitoreo y comunicación.
+		\item Se debe implementar el protocolo de comunicación para la red mesh utilizando el transceptor de 915 MHz.
+		\item EL sistema debe implementar la interfaz de conexión a internet a través del módulo Wi-Fi, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+		\item Debe implementar la interfaz de conexión a internet a través del módulo celular, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+		\item El firmware debe incluir la lógica de selección de conexión a internet, priorizando la interfaz Wi-Fi cuando ambas conexiones estén disponibles, y conmutando a celular en caso de fallo.
+		\item En caso de no disponer conexión a internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado de enviar y recibir datos hacia y desde internet. 
+		\item El firmware debe procesar y gestionar los datos proporcionados por el sensor fotosensible.
+		\item El sistema debe permitir el encendido automático de las luminarias según los niveles de luz ambiental detectados, o mediante comandos remotos.
+		\item Debe ser posible la actualización del firmware over-the-air (OTA).
+		\item El firmware debe controlar la intensidad lumínica de las luminarias, regulando la tensión de entrada del circuito dimmer a través del firmware.
+		\item El firmware debe procesar la información del módulo GPS para geoposicionamiento y sincronización horaria.
+		\item Se debe procesar e informar los datos de consumo eléctrico enviados por el sensor de efecto hall.
+		\item El firmware debe procesar los datos enviados por el optoacoplador para detectar la presencia o ausencia de tensión alterna en la luminaria.
+		\item Debe medir y reportar la tensión de la batería utilizando el ADC.
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-\textbf{¡¡¡No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!}
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
