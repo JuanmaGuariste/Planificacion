@@ -103,9 +103,6 @@ Se adjunta a esta acta la planificación inicial.
 \end{tabular}
 \end{table}
 
-
-
-
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
@@ -178,6 +175,8 @@ Colaboradores: Gustavo Vasoin es un profesional con una sólida trayectoria en e
 
 Mejorar la eficiencia en la gestión de la iluminación pública, reducir los costos operativos y de mantenimiento, y optimizar el consumo energético. Se busca desarrollar un sistema de luminarias inteligentes con conexión a Internet que permita un control preciso y remoto, garantizando una comunicación robusta y escalable entre las luminarias mediante una red mesh.
 
+\pagebreak
+
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
@@ -214,6 +213,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item En caso de no contar con algún conocimiento específico para desarrollar el proyecto, se podrá contar con el apoyo o soporte del cuerpo docente de la especialización.
 \end{itemize}
 
+\pagebreak
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
@@ -228,14 +228,14 @@ Para el desarrollo del presente proyecto se supone que:
  			\item El sistema debe ser capaz de regular la intensidad lumínica de la luminaria a través de un circuito dimmer.
 			\item Debe contar con un sensor fotosensible que mida la intensidad lumínica ambiental.
 			%\item Debe poseer circuitería de adaptación de señales de control.
-			\item El sistema debe utilizar un relé controlado por el microcontrolador, que permita habilitar o deshabilitar el suministro de corriente a la luminaria.
-			\item Debe integrar un módulo Wi-Fi para la conectividad a internet.
-			\item Debe integrar un módulo celular para la conectividad a internet.
+			\item El sistema debe utilizar un relé controlado por el microcontrolador que permita habilitar o deshabilitar el suministro de corriente a la luminaria.
+			\item Debe integrar un módulo Wi-Fi para la conectividad a Internet.
+			\item Debe integrar un módulo celular para la conectividad a Internet.
 			\item El sistema debe implementar un transceptor en la banda de 915 MHz para establecer y mantener la red mesh de luminarias.
 			\item Debe utilizar un amplificador para el transceptor de 915 MHz que permita aumentar la potencia de salida al menos 20 dBm.
 			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica de cada luminaria y sincronizar datos como la hora y ubicación precisa.
 			\item Debe ser capaz de operar tanto con alimentación de la red eléctrica como a través de una batería en caso de cortes o fallos en el suministro eléctrico. 
-			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automáticamente mediante circuitos analógicos, garantizando la continuidad sin intervención manual.
+			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automática mediante circuitos analógicos, garantizando la continuidad sin intervención manual.
 			\item Se debe implementar un circuito de carga de batería que permita su recarga segura cuando el sistema esté conectado a la red eléctrica.
 			\item Se deben implementar circuitos de adaptación para medir señales con el ADC del microcontrolador de manera segura.
 		\end{enumerate}
@@ -244,10 +244,10 @@ Para el desarrollo del presente proyecto se supone que:
 		\begin{enumerate}		
 		\item El firmware debe estar implementado sobre un sistema operativo de tiempo real (RTOS), asegurando el manejo eficiente de múltiples tareas críticas como control, monitoreo y comunicación.
 		\item Se debe implementar el protocolo de comunicación para la red mesh utilizando el transceptor de 915 MHz.
-		\item EL sistema debe implementar la interfaz de conexión a internet a través del módulo Wi-Fi, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
-		\item Debe implementar la interfaz de conexión a internet a través del módulo celular, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
-		\item El firmware debe incluir la lógica de selección de conexión a internet, priorizando la interfaz Wi-Fi cuando ambas conexiones estén disponibles, y conmutando a celular en caso de fallo.
-		\item En caso de no disponer conexión a internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado de enviar y recibir datos hacia y desde internet. 
+		\item EL sistema debe implementar la interfaz de conexión a Internet a través del módulo Wi-Fi, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+		\item Debe implementar la interfaz de conexión a Internet a través del módulo celular, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+		\item El firmware debe incluir la lógica de selección de conexión a Internet, priorizando la interfaz Wi-Fi cuando ambas conexiones estén disponibles, y conmutando a celular en caso de fallo.
+		\item En caso de no disponer conexión a Internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado de enviar y recibir datos hacia y desde Internet. 
 		\item El firmware debe procesar y gestionar los datos proporcionados por el sensor fotosensible.
 		\item El sistema debe permitir el encendido automático de las luminarias según los niveles de luz ambiental detectados, o mediante comandos remotos.
 		\item Debe ser posible la actualización del firmware over-the-air (OTA).
@@ -262,18 +262,59 @@ Para el desarrollo del presente proyecto se supone que:
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+En esta sección se presentan algunas historias de usuarios valoradas en un sistema basado en la estimación de tres categorías: dificultad, complejidad y riesgo o incertidumbre asociadas a cada historia. Para determinar los \textit{story points} de una historia de usuario, se asignaron valores a cada uno de
+los siguientes aspectos:
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{\linewidth}{|X|c|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Grado} &
+\textbf{Dificultad} &
+\textbf{Complejidad} &
+\textbf{Riesgo o Incertidumbre} \\ \hline
+Bajo  &
+ 1&
+ 1 &
+ 2
+\\ \hline
+Medio  &
+ 3&
+ 5&
+ 3
+ \\ \hline
+Alto &
+ 5 &
+ 13 &
+ 5
+\\ \hline
+\end{tabularx}
+%\caption{Grados de Dificultad, Complejidad y Riesgo para las historias de usuarios}
+\end{table}
+Para calcular los \textit{story points}, se suman los valores asignados a cada categoría y el resultado se aproxima al siguiente número de la serie de Fibonacci. Por ejemplo, si la complejidad del trabajo es media (5), la dificultad es alta (5) y la incertidumbre es media (3), los \textit{story points} serían 21 (5 + 5 + 3 = 13, que se aproxima al siguiente número de Fibonacci, que es 21).
 
-El formato propuesto es: 
 \begin{enumerate}
-\item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
+\item ``Como cliente del proyecto, quiero que el sistema CityLight permita una gestión centralizada y en tiempo real de todas las luminarias instaladas, para optimizar el mantenimiento y reducir los costos operativos, mejorando la eficiencia del servicio."
 
-\textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
+\textit{Story points}: 21 (complejidad: 5, dificultad: 5, incertidumbre: 3)
+
+\item ``Como usuario final, quiero que el sistema CityLight utilice la red mesh cuando no haya conexión a Internet, para que los eventos se comuniquen a través de un gateway, asegurando la continuidad del servicio."
+
+\textit{Story points}: 13 (complejidad: 5, dificultad: 3, incertidumbre: 3)
+
+\item ``Como usuario final, quiero poder monitorear el consumo eléctrico y la presencia de tensión de cada luminaria, para asegurarme de que estén operando correctamente y 
+optimizar el uso de energía."
+
+\textit{Story points}: 8 (complejidad: 1, dificultad: 3, incertidumbre: 2)
+
+%\item ``Como desarrollador de firmware para CityLight, necesito que el sistema permita una implementación modular y bien documentada, para facilitar la integración del protocolo MESH, el control del relé y las actualizaciones OTA, garantizando un desarrollo eficiente y mantenible a largo plazo."
+
+%\textit{Story points}: 8 (complejidad: 3, dificultad: 3, incertidumbre: 3)
+
 \end{enumerate}
-\end{consigna}
+
+
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
@@ -323,9 +364,9 @@ El formato propuesto es:
 	\begin{enumerate}
 	\item Implementación del RTOS (8 h)
 	\item Implementación del protocolo de comunicación para la red mesh (32 h)
-	\item Implementación de interfaz de conexión a internet por Wi-Fi (32 h)
-	\item Implementación de interfaz de conexión a internet por red celular (32 h)
-	\item Implementación de manejador de conexiones a internet (16 h)
+	\item Implementación de interfaz de conexión a Internet por Wi-Fi (32 h)
+	\item Implementación de interfaz de conexión a Internet por red celular (32 h)
+	\item Implementación de manejador de conexiones a Internet (16 h)
 	\item Implementación de la adquisición y gestión de los datos provenientes del sensor fotosensible (16 h)
 	\item Implementación de la lógica de control de intensidad lumínica mediante circuito dimmer (16 h)
 	\item Implementación del control del relé para habilitación/deshabilitación de la luminaria (16 h)
@@ -345,7 +386,7 @@ El formato propuesto es:
 	\end{enumerate}
 \item \textbf{Documentación final} (88 h)
 	\begin{enumerate}
-	\item Elaboración de manual de usuario del CityLight (24 h)
+	\item Elaboración de manual de usuario (24 h)
 	\item Elaboración de memoria técnica (32 h)
 	\item Revisión de memoria técnica (16 h)
 	\item Elaboración de la presentación final (16 h)
