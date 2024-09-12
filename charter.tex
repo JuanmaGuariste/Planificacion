@@ -88,7 +88,7 @@ Buenos Aires, \fechaInicioName
 
 %Se adjunta a esta acta la planificación inicial.
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de un prototipo para el control eficiente y remoto de las luminarias, permitiendo una comunicación efectiva y robusta entre ellas y una gestión centralizada. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de U\$D 1000, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de un prototipo para el control eficiente y remoto de las luminarias, permitiendo una comunicación efectiva y robusta entre ellas y una gestión centralizada. El trabajo tendrá un presupuesto preliminar estimado de 634 horas y un costo estimado de U\$D 1000, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -223,7 +223,7 @@ Para el desarrollo del presente proyecto se supone que:
 		\begin{enumerate}
 			\item El sistema debe contar con una interfaz física NEMA de 7 pines para conectarse y comunicarse con las luminarias de alumbrado público.
 			\item La implementación debe ser compatible con una carcasa genérica para luminarias. En caso de ser necesario, se debe permitir el montaje de un PCB encima de otro para optimizar el uso del espacio disponible y facilitar la integración de todos los componentes.
-			\item  El sistema debe integrar un sensor de efecto hall para medir el consumo de corriente AC de la luminaria conectada.
+			\item  El sistema debe integrar un sensor de efecto Hall para medir el consumo de corriente AC de la luminaria conectada.
 			\item El sistema debe detectar la presencia de tensión AC en la luminaria utilizando un optoacoplador.
  			\item El sistema debe ser capaz de regular la intensidad lumínica de la luminaria a través de un circuito dimmer.
 			\item Debe contar con un sensor fotosensible que mida la intensidad lumínica ambiental.
@@ -250,10 +250,10 @@ Para el desarrollo del presente proyecto se supone que:
 		\item En caso de no disponer conexión a Internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado de enviar y recibir datos hacia y desde Internet. 
 		\item El firmware debe procesar y gestionar los datos proporcionados por el sensor fotosensible.
 		\item El sistema debe permitir el encendido automático de las luminarias según los niveles de luz ambiental detectados, o mediante comandos remotos.
-		\item Debe ser posible la actualización del firmware over-the-air (OTA).
+		\item Debe ser posible la actualización del \textit{firmware over-the-air} (OTA).
 		\item El firmware debe controlar la intensidad lumínica de las luminarias, regulando la tensión de entrada del circuito dimmer.
 		\item El firmware debe procesar la información del módulo GPS para geoposicionamiento y sincronización horaria.
-		\item Se deben leer, procesar e informar los datos de consumo eléctrico enviados por el sensor de efecto hall.
+		\item Se deben leer, procesar e informar los datos de consumo eléctrico enviados por el sensor de efecto Hall.
 		\item El firmware debe procesar los datos enviados por el optoacoplador para detectar la presencia o ausencia de tensión alterna en la luminaria.
 		\item Debe medir y reportar la tensión de la batería utilizando el ADC del microcontrolador.
 		\end{enumerate}
@@ -292,12 +292,12 @@ Alto &
 \end{tabularx}
 %\caption{Grados de Dificultad, Complejidad y Riesgo para las historias de usuarios}
 \end{table}
-Para calcular los \textit{story points}, se suman los valores asignados a cada categoría y el resultado se aproxima al siguiente número de la serie de Fibonacci. Por ejemplo, si la complejidad del trabajo es media (5), la dificultad es alta (5) y la incertidumbre es media (3), los \textit{story points} serían 21 (5 + 5 + 3 = 13, que se aproxima al siguiente número de Fibonacci, que es 21).
+Para calcular los \textit{story points}, se suman los valores asignados a cada categoría y el resultado se aproxima al siguiente número de la serie de Fibonacci. Por ejemplo, si la complejidad del trabajo es media (5), la dificultad es baja (1) y la incertidumbre es alta (5), los \textit{story points} serían 13 (5 + 1 + 5 = 11, que se aproxima al siguiente número de Fibonacci, que es 13).
 
 \begin{enumerate}
 \item ``Como cliente del proyecto, quiero que el sistema CityLight permita una gestión centralizada y en tiempo real de todas las luminarias instaladas, para optimizar el mantenimiento y reducir los costos operativos, mejorando la eficiencia del servicio."
 
-\textit{Story points}: 21 (complejidad: 5, dificultad: 5, incertidumbre: 3)
+\textit{Story points}: 13 (complejidad: 5, dificultad: 5, incertidumbre: 3)
 
 \item ``Como usuario final, quiero que el sistema CityLight utilice la red mesh cuando no haya conexión a Internet, para que los eventos se comuniquen a través de un gateway, asegurando la continuidad del servicio."
 
@@ -371,7 +371,7 @@ optimizar el uso de energía."
 	\item Implementación de la lógica de control de intensidad lumínica mediante circuito dimmer (16 h)
 	\item Implementación del control del relé para habilitación/deshabilitación de la luminaria (16 h)
 	\item Implementación de control del módulo GPS (32 h)
-	\item Implementación de adquisición y gestion de los datos de consumo eléctrico enviados por el sensor de efecto hall (16 h)
+	\item Implementación de adquisición y gestion de los datos de consumo eléctrico enviados por el sensor de efecto Hall (16 h)
 	\item Implementación de adquisición y gestion del dato de presencia o ausencia de tensión alterna enviado por el optoacoplador (8 h)
 	\item Implementación de adquisición y gestión de la tensión de batería (8 h)
 	\item Implementación de la actualización OTA del firmware (32 h)
