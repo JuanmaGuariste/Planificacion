@@ -498,34 +498,37 @@ Descripción &
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
+a) Identificación de los riesgos y estimación de sus consecuencias:
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
+Riesgo 1: retrasos en el cronograma por cambios en prioridades de proyectos laborales.
 \begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
+	\item Severidad (8): un cambio en las prioridades podría resultar en la imposibilidad de entregar el proyecto en la fecha estipulada, afectando plazos y compromisos.\\
+	\item Probabilidad de ocurrencia (6): dado que en Deitres S.A. se gestionan varios proyectos simultáneamente, es probable que las prioridades varíen, lo que impactaría el cronograma del proyecto actual.\\
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: errores de diseño en el PCB.
 \begin{itemize}
-	\item Severidad (S): X.\\
-	Justificación...
-	\item Ocurrencia (O): Y.\\
-	Justificación...
-\end{itemize}
+	\item Severidad (9): un error en el diseño del PCB implicaría rehacer el prototipo, lo que afectaría tanto el presupuesto como el cronograma, generando retrasos considerables.\\
+	\item Ocurrencia (5): integrar múltiples módulos de comunicación y diversos circuitos hace probable que surjan fallos inesperados.\\
+\end{itemize}   
 
-Riesgo 3:
+Riesgo 3: destrucción de los componentes o el prototipo.
 \begin{itemize}
-	\item Severidad (S):  X.\\
-	Justificación...
-	\item Ocurrencia (O): Y.\\
-	Justificación...
-\end{itemize}
+	\item Severidad (9):  la destrucción de componentes o del prototipo causaría demoras en la entrega, afectando el cronograma del proyecto.\\
+	\item Ocurrencia (2):  es poco probable que ocurra, ya que se adquirirán componentes de repuesto y se fabricarán varias copias del PCB.\\
+\end{itemize}   
 
+Riesgo 4:  demoras en la adquisición de los componentes.
+\begin{itemize}
+	\item Severidad (7): la falta de componentes necesarios para probar y trabajar sobre el prototipo resultaría en retrasos significativos en el desarrollo y pruebas del proyecto.\\
+	\item Ocurrencia (6): la necesidad de importar componentes esenciales desde el extranjero aumenta el riesgo de retrasos en su entrega, especialmente debido a las restricciones actuales de importación.\\
+\end{itemize}   
+
+Riesgo 5: retraso en la programación del firmware.
+\begin{itemize}
+	\item Severidad (7): un retraso en la programación del firmware afectaría significativamente la integración y puesta en marcha del prototipo, lo que podría extender los tiempos de desarrollo y pruebas.\\
+	\item Ocurrencia (4):  este riesgo es bastante probable debido a la falta de experiencia específica en algunos aspectos clave del firmware, lo que podría generar demoras en el desarrollo y depuración del código.\\
+\end{itemize}   
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
@@ -534,37 +537,42 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+Riesgo &                                                                                                                         S & O & RPN & S* & O* & RPN* \\ \hline
+Retrasos en el cronograma por cambios en prioridades de proyectos laborales &   	8&  6 &     48&    8&   3&     24  \\ \hline
+Errores de diseño en el PCB&   				 					9&   5&     45&    9&   3&     27  \\ \hline
+Destrucción de los componentes o el prototipo&  						9&   2&     18&      &     &           \\ \hline
+Demoras en la adquisición de los componentes&   						7&   6&     42&    7&   2&     14  \\ \hline
+Retraso en la programación del firmware &  		 					7&   4&    28&       &     &           \\ \hline
 \end{tabularx}%
 \end{table}
 
-Criterio adoptado: 
-
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Criterio adoptado: Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
+Riesgo 1: se organizarán las tareas en Deitres S.A y se reservará tiempo con anticipación para poder disponer del tiempo mínimo necesario para realizar el proyecto en el tiempo estipulado.
   \begin{itemize}
-	\item Severidad (S*): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O*): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+	\item Severidad (8): la severidad se mantiene.
+	\item Probabilidad de ocurrencia (3): disminuye la probabilidad de ocurrencia, ya que con una mejor gestión del tiempo y una planificación anticipada se reducirá el impacto de cambios en las prioridades.
 	\end{itemize}
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+Riesgo 2:  el diseño del PCB debe ser revisado exhaustivamente mediante inspección y simulación. Se solicitará la revisión de un colaborador de Deitres S.A. y del director del proyecto antes de la fabricación del prototipo.
+  \begin{itemize}
+	\item Severidad (9): la severidad se mantiene.
+	\item Probabilidad de ocurrencia (3):  disminuye la probabilidad de ocurrencia, dado que una revisión exhaustiva del diseño reducirá el riesgo de errores importantes.
+	\end{itemize}
 
-\end{consigna}
+Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
+  \begin{itemize}
+	\item Severidad (7): la severidad se mantiene.
+	\item Probabilidad de ocurrencia (2):  disminuye la probabilidad de ocurrencia debido a que al adelantar la fecha de adquisición de materiales se contará con mayor margen en caso de problemas de importación o falta de stock.
+	\end{itemize}
+
+
+
+
 
 
 \section{14. Gestión de la calidad}
