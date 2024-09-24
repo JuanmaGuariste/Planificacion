@@ -224,30 +224,33 @@ Para el desarrollo del presente proyecto se supone que:
 			\item El sistema debe contar con una interfaz física NEMA de 7 pines para conectarse y comunicarse con las luminarias de alumbrado público.
 			\item La implementación debe ser compatible con una carcasa genérica para luminarias. En caso de ser necesario, se debe permitir el montaje de un PCB encima de otro para optimizar el uso del espacio disponible y facilitar la integración de todos los componentes.
 			\item  El sistema debe integrar un sensor de efecto Hall para medir el consumo de corriente AC de la luminaria conectada.
-			\item El sistema debe detectar la presencia de tensión AC en la luminaria utilizando un optoacoplador.
- 			\item El sistema debe ser capaz de regular la intensidad lumínica de la luminaria a través de un circuito dimmer.
+			\item El sistema debe integrar un optoacoplador para detectar la presencia de tensión AC en la luminaria.
+ 			\item El sistema debe integrar un circuito dimmer que sea capaz de regular la intensidad lumínica de la luminaria.
 			\item Debe contar con un sensor fotosensible que mida la intensidad lumínica ambiental.
 			%\item Debe poseer circuitería de adaptación de señales de control.
-			\item El sistema debe utilizar un relé controlado por el microcontrolador que permita habilitar o deshabilitar el suministro de corriente a la luminaria.
+			\item El sistema debe integrar un relé que sea controlado por el microcontrolador y que permita habilitar o deshabilitar el suministro de corriente a la luminaria.
 			\item Debe integrar un módulo Wi-Fi para la conectividad a Internet.
 			\item Debe integrar un módulo celular para la conectividad a Internet.
 			\item El sistema debe implementar un transceptor en la banda de 915 MHz para establecer y mantener la red mesh de luminarias.
 			\item Debe utilizar un amplificador para el transceptor de 915 MHz que permita aumentar la potencia de salida al menos 20 dBm.
 			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica de cada luminaria y sincronizar datos como la hora y ubicación precisa.
 			\item Debe ser capaz de operar tanto con alimentación de la red eléctrica como a través de una batería en caso de cortes o fallos en el suministro eléctrico. 
-			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automática mediante circuitos analógicos, garantizando la continuidad sin intervención manual.
+			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automática mediante circuitos analógicos, garantizando la continuidad sin	intervención manual.
 			\item Se debe implementar un circuito de carga de batería que permita su recarga segura cuando el sistema esté conectado a la red eléctrica.
 			\item Se deben implementar circuitos de adaptación para medir señales con el ADC del microcontrolador de manera segura.
+			\item  El diseño del sistema debe permitir la fabricación de ciertos dispositivos CityLight sin la inclusión de componentes para la conexión a Internet, como los módulos de celular y Wi-Fi,  junto con sus circuitos asociados. Esto permitirá que dichos dispositivos utilicen exclusivamente la red mesh para comunicarse con un gateway, lo que generará un ahorro significativo en costos.
 		\end{enumerate}
 
 	\item Requerimientos asociados con el firmware:
 		\begin{enumerate}		
 		\item El firmware debe estar implementado sobre un sistema operativo de tiempo real (RTOS), asegurando el manejo eficiente de múltiples tareas críticas como control, monitoreo y comunicación.
 		\item Se debe implementar el protocolo de comunicación para la red mesh utilizando el transceptor de 915 MHz.
-		\item EL sistema debe implementar la interfaz de conexión a Internet a través del módulo Wi-Fi, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+		\item EL sistema debe implementar la interfaz de conexión a Internet a través del módulo Wi-Fi, permitiendo al sistema enviar y recibir datos desde plataformas de	gestión remota.
 		\item Debe implementar la interfaz de conexión a Internet a través del módulo celular, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
-		\item El firmware debe incluir la lógica de selección de conexión a Internet, priorizando la interfaz Wi-Fi cuando ambas conexiones estén disponibles, y conmutando a celular en caso de fallo.
-		\item En caso de no disponer conexión a Internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado de enviar y recibir datos hacia y desde Internet. 
+		\item El firmware debe incluir la lógica de selección de conexión a Internet, priorizando la interfaz Wi-Fi cuando ambas conexiones estén disponibles, y conmutando
+			 a celular en caso de fallo.
+		\item En caso de no disponer conexión a Internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado
+			 de enviar y recibir datos hacia y desde Internet. 
 		\item El firmware debe procesar y gestionar los datos proporcionados por el sensor fotosensible.
 		\item El sistema debe permitir el encendido automático de las luminarias según los niveles de luz ambiental detectados, o mediante comandos remotos.
 		\item Debe ser posible la actualización del firmware \textit{over-the-air} (OTA).
@@ -571,33 +574,174 @@ Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
 	\end{itemize}
 
 
-
-
-
-
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Elija al menos diez requerimientos que a su criterio sean los más importantes/críticos/que aportan más valor y para cada uno de ellos indique las acciones de verificación y validación que permitan asegurar su cumplimiento.
+\begin{enumerate}
+	\item Requerimientos asociados con el hardware:
+		\begin{enumerate}
+			\item El sistema debe contar con una interfaz física NEMA de 7 pines para conectarse y comunicarse con las luminarias de alumbrado público.
+				  \begin{itemize}
+				\item Verificación: revisión del diseño en el software de CAD del PCB para asegurar la correcta ubicación y conexionado de los 7 pines..
+				\item Validación:  medición física post-fabricación de la interfaz NEMA en el prototipo para garantizar su compatibilidad.
+				\end{itemize}
+			\item La implementación debe ser compatible con una carcasa genérica para luminarias. En caso de ser necesario, se debe permitir el montaje de un PCB encima de otro para optimizar el uso del espacio disponible y facilitar la integración de todos los componentes.
+				\begin{itemize}
+				\item Verificación: simulación de montaje en software 3D y revisión de dimensiones para garantizar que el PCB encaje en la carcasa y 	soporte el montaje en capas.
+				\item Validación: inspección en el ensamblaje físico del sistema en la carcasa genérica.
+				\end{itemize}
+			\item  El sistema debe integrar un sensor de efecto Hall para medir el consumo de corriente AC de la luminaria conectada.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del sensor.
+				\item Validación: inspección visual en el PCB post-fabricación.
+				\end{itemize}
+			\item El sistema debe integrar un optoacoplador para detectar la presencia de tensión AC en la luminaria.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del optoacoplador.
+				\item Validación: inspección visual del optoacoplador en el PCB post-fabricación.
+				\end{itemize}
+ 			\item El sistema debe integrar un circuito dimmer que sea capaz de regular la intensidad lumínica de la luminaria.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del circuito dimmer.
+				\item Validación: inspección visual del circuito dimmer en el PCB post-fabricación.
+				\end{itemize}
+			\item Debe contar con un sensor fotosensible que mida la intensidad lumínica ambiental.
+				\begin{itemize}
+				\item Verificación:  revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del sensor fotosensible. 
+				\item Validación:  inspección visual del sensor fotosensible en el PCB.
+				\end{itemize}
+			\item El sistema debe integrar un relé que sea controlado por el microcontrolador y que permita habilitar o deshabilitar el suministro de corriente a la luminaria.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del relé.
+				\item Validación: inspección visual del relé en el PCB.
+				\end{itemize}
+			\item Debe integrar un módulo Wi-Fi para la conectividad a Internet.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del módulo Wi-Fi. 
+				\item Validación: inspección visual del módulo Wi-Fi en el PCB.
+				\end{itemize}
+			\item Debe integrar un módulo celular para la conectividad a Internet.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del módulo celular. 
+				\item Validación: inspección visual del módulo celular en el PCB.
+				\end{itemize}
+			\item El sistema debe implementar un transceptor en la banda de 915 MHz para establecer y mantener la red mesh de luminarias.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del transceptor. 
+				\item Validación: inspección visual del transceptor en el PCB.
+				\end{itemize}
+			\item Debe utilizar un amplificador para el transceptor de 915 MHz que permita aumentar la potencia de salida al menos 20 dBm.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del amplificador. 
+				\item Validación: inspección visual del amplificador en el PCB.
+				\end{itemize}
+			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica de cada luminaria y sincronizar datos como la hora y ubicación precisa.
+				\begin{itemize}
+				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del módulo GPS. 
+				\item Validación: inspección visual del módulo GPS en el PCB.
+				\end{itemize}
+			\item Debe ser capaz de operar tanto con alimentación de la red eléctrica como a través de una batería en caso de cortes o fallos en el suministro eléctrico. 
+				\begin{itemize}
+				\item Verificación: revisión del diseño eléctrico que permita la alimentación dual y simulación de la conmutación de fuentes.
+				\item Validación: pruebas prácticas alternando entre la red eléctrica y la batería para asegurar la continuidad.
+				\end{itemize}
+			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automática mediante circuitos analógicos, garantizando la continuidad sin intervención manual.
+				\begin{itemize}
+				\item Verificación: análisis del diseño de los circuitos de conmutación para garantizar la transición automática.
+				\item Validación: pruebas de conmutación en condiciones reales de pérdida de energía y recuperación.
+				\end{itemize}
+			\item Se debe implementar un circuito de carga de batería que permita su recarga segura cuando el sistema esté conectado a la red eléctrica.
+				\begin{itemize}
+				\item Verificación: revisión del diseño del circuito de carga y mediciones sobre el PCB.
+				\item Validación: pruebas prácticas de recarga de la batería en diferentes estados de descarga.
+				\end{itemize}
+			\item Se deben implementar circuitos de adaptación para medir señales con el ADC del microcontrolador de manera segura.
+				\begin{itemize}
+				\item Verificación: revisión del diseño de los circuitos de adaptación y medición de señales sobre el PCB.
+				\item Validación: inspección visual de los circuitos de adaptación en el PCB.
+				\end{itemize}
+			\item El sistema debe diseñarse de tal manera que algunos dispositivos CityLight puedan fabricarse sin los componentes físicos necesarios para las conexiones 
+				 a Internet, como los módulos de celular y Wi-Fi. Esto permitirá que se comuniquen exclusivamente a través de la red mesh, lo que contribuirá a reducir costos al no requerir conexión a Internet para todos los dispositivos.
+				\begin{itemize}
+				\item Verificación: : revisión del diseño y mediciones sobre el PCB.
+				\item Validación: inspección visual en el PCB.
+				\end{itemize}
+		\end{enumerate}
 
-\begin{itemize} 
-\item Req \#1: copiar acá el requerimiento con su correspondiente número.
-
-\begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar.
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar. 
-\end{itemize}
-
-\end{itemize}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  
-
-Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  
-
-En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
-
-\end{consigna}
+	\item Requerimientos asociados con el firmware:
+		\begin{enumerate}		
+			\item El firmware debe estar implementado sobre un sistema operativo de tiempo real (RTOS), asegurando el manejo eficiente de múltiples tareas críticas como control, monitoreo y comunicación.
+				\begin{itemize}
+				\item Verificación: revisión del código fuente para confirmar el uso de un RTOS, análisis del manejo de tareas y priorización mediante simulaciones o herramientas de análisis de tareas del RTOS.
+				\item Validación: pruebas de desempeño en el sistema físico, verificando el correcto funcionamiento y respuesta del sistema ante múltiples tareas 	críticas bajo diferentes condiciones.
+				\end{itemize}
+			\item Se debe implementar el protocolo de comunicación para la red mesh utilizando el transceptor de 915 MHz.
+				\begin{itemize}
+				\item Verificación: revisión del código y pruebas en laboratorio con simulación de la red mesh.
+				\item Validación: pruebas de campo con dispositivos conectados en la red mesh para comprobar la estabilidad y fiabilidad de la comunicación en un entorno real.
+				\end{itemize}
+			\item EL sistema debe implementar la interfaz de conexión a Internet a través del módulo Wi-Fi, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+				\begin{itemize}
+				\item Verificación: revisión del código de implementación del stack de red Wi-Fi y pruebas de conexión en laboratorio.
+				\item Validación: pruebas de conexión remota reales, donde se compruebe la transmisión de datos desde y hacia una plataforma de gestión remota.
+				\end{itemize}
+			\item Debe implementar la interfaz de conexión a Internet a través del módulo celular, permitiendo al sistema enviar y recibir datos desde plataformas de gestión remota.
+				\begin{itemize}
+				\item Verificación: revisión del código que maneja la interfaz de red celular, simulación de datos móviles en un entorno controlado.
+				\item Validación: pruebas reales de conectividad a través de redes móviles, asegurando el envío y recepción de datos con la plataforma de gestión remota.
+				\end{itemize}
+			\item El firmware debe incluir la lógica de selección de conexión a Internet, priorizando la interfaz Wi-Fi cuando ambas conexiones estén disponibles, y conmutando a celular en caso de fallo.
+				\begin{itemize}
+				\item Verificación: revisión del código de conmutación y simulaciones del proceso de fallo de la conexión Wi-Fi para validar la transición a la conexión celular.
+				\item Validación: pruebas en un entorno real con ambas interfaces disponibles, verificando el cambio entre ellas cuando se induzcan fallos en la conectividad Wi-Fi.
+				\end{itemize}
+			\item En caso de no disponer conexión a Internet, el sistema debe utilizar la red mesh para comunicarse con un gateway presente en la red, que será el encargado de enviar y recibir datos hacia y desde Internet. 
+				\begin{itemize}
+				\item Verificación: revisión del código para asegurar la lógica de conmutación y simulación en laboratorio, comprobando que el sistema utiliza la red mesh para comunicarse con el gateway.
+				\item Validación: pruebas en campo donde se simule la pérdida de conexión a Internet y se valide que los datos son transmitidos a través de la red mesh.
+				\end{itemize}
+			\item El firmware debe procesar y gestionar los datos proporcionados por el sensor fotosensible.
+				\begin{itemize}
+				\item Verificación: revisión del código fuente que procesa los datos del sensor fotosensible y simulación de datos para asegurar el correcto	procesamiento.
+				\item Validación: pruebas físicas donde se varíen las condiciones de iluminación y se valide la respuesta del sistema ante diferentes niveles de luz.
+				\end{itemize}
+			\item El sistema debe permitir el encendido automático de las luminarias según los niveles de luz ambiental detectados, o mediante comandos remotos.
+				\begin{itemize}
+				\item Verificación: revisión de la implementación del algoritmo de control y simulación del proceso de encendido automático y por comando.
+				\item Validación: pruebas de campo donde se observe el encendido automático bajo diferentes niveles de iluminación y mediante comandos remotos.
+				\end{itemize}
+			\item Debe ser posible la actualización del firmware \textit{over-the-air} (OTA).
+				\begin{itemize}
+				\item Verificación: revisión del código de gestión de actualizaciones OTA y comprobación de que el proceso de actualización sea correcto.
+				\item Validación: pruebas en un entorno real con un servidor OTA, comprobando la correcta actualización del firmware sin intervención física.
+				\end{itemize}
+			\item El firmware debe controlar la intensidad lumínica de las luminarias, regulando la tensión de entrada del circuito dimmer.
+				\begin{itemize}
+				\item Verificación: revisión del código que gestiona el control del dimmer y simulaciones de la regulación de la intensidad lumínica.
+				\item Validación: pruebas físicas de control de luminarias donde se mida la intensidad lumínica bajo diferentes niveles de regulación.
+				\end{itemize}
+			\item El firmware debe procesar la información del módulo GPS para geoposicionamiento y sincronización horaria.
+				\begin{itemize}
+				\item Verificación: revisión del código que procesa la información del GPS y comprobación de que los datos recibidos del módulo GPS son interpretados correctamente.
+				\item Validación: pruebas de campo con el módulo GPS, validando la precisión de los datos de posicionamiento y sincronización.
+				\end{itemize}
+			\item Se deben leer, procesar e informar los datos de consumo eléctrico enviados por el sensor de efecto Hall.
+				\begin{itemize}
+				\item Verificación: revisión del código de adquisición de datos y comprobación de que los datos del sensor de efecto Hall son procesados correctamente.
+				\item Validación: pruebas físicas con el sensor de efecto Hall, verificando la precisión y consistencia de las mediciones de consumo eléctrico.
+				\end{itemize}
+			\item El firmware debe procesar los datos enviados por el optoacoplador para detectar la presencia o ausencia de tensión alterna en la luminaria.
+				\begin{itemize}
+				\item Verificación: revisión del código que procesa las señales del optoacoplador y comprobación de que los datos enviados son procesados correctamente.
+				\item Validación:
+				\end{itemize}
+			\item Debe medir y reportar la tensión de la batería utilizando el ADC del microcontrolador
+				\begin{itemize}
+				\item Verificación: revisión del código que procesa las señales del ADC y comprobación de que las lecturas de voltaje de la batería son adecuadamente 	interpretadas.
+				\item Validación: pruebas reales de monitoreo de la batería, validando las mediciones de voltaje y su precisión a través del ADC del microcontrolador.
+				\end{itemize}
+		\end{enumerate}
+\end{enumerate}
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
