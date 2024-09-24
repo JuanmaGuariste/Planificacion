@@ -238,7 +238,7 @@ Para el desarrollo del presente proyecto se supone que:
 			\item La conmutación entre la alimentación de la red eléctrica y la batería debe ser automática mediante circuitos analógicos, garantizando la continuidad sin	intervención manual.
 			\item Se debe implementar un circuito de carga de batería que permita su recarga segura cuando el sistema esté conectado a la red eléctrica.
 			\item Se deben implementar circuitos de adaptación para medir señales con el ADC del microcontrolador de manera segura.
-			\item  El diseño del sistema debe permitir la fabricación de ciertos dispositivos CityLight sin la inclusión de componentes para la conexión a Internet, como los módulos de celular y Wi-Fi,  junto con sus circuitos asociados. Esto permitirá que dichos dispositivos utilicen exclusivamente la red mesh para comunicarse con un gateway, lo que generará un ahorro significativo en costos.
+			\item  El diseño del sistema debe permitir la fabricación de ciertos dispositivos CityLight sin la inclusión de componentes para la conexión a Internet, como los módulos de celular y Wi-Fi, junto con sus circuitos asociados. Esto permitirá que dichos dispositivos utilicen exclusivamente la red mesh para comunicarse con un gateway, lo que generará un ahorro significativo en costos.
 		\end{enumerate}
 
 	\item Requerimientos asociados con el firmware:
@@ -426,7 +426,6 @@ En las figuras \ref{fig:diagGantt-1} y \ref{fig:diagGantt-2} se muestra el diagr
 \caption{Diagrama de Gantt (parte 1).} %Modificar este título acorde.
 \label{fig:diagGantt-1}
 \end{figure}
-
 \end{landscape}
 
 \begin{landscape}
@@ -436,7 +435,6 @@ En las figuras \ref{fig:diagGantt-1} y \ref{fig:diagGantt-2} se muestra el diagr
 \caption{Diagrama de Gantt (parte 2).} %Modificar este título acorde.
 \label{fig:diagGantt-2}
 \end{figure}
-
 \end{landscape}
 
 
@@ -515,6 +513,7 @@ Riesgo 2: errores de diseño en el PCB.
 	\item Ocurrencia (5): integrar múltiples módulos de comunicación y diversos circuitos hace probable que surjan fallos inesperados.\\
 \end{itemize}   
 
+\pagebreak
 Riesgo 3: destrucción de los componentes o el prototipo.
 \begin{itemize}
 	\item Severidad (9):  la destrucción de componentes o del prototipo causaría demoras en la entrega, afectando el cronograma del proyecto.\\
@@ -553,26 +552,23 @@ Criterio adoptado: Se tomarán medidas de mitigación en los riesgos cuyos núme
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
-c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
- 
+\pagebreak
+c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido: 
 Riesgo 1: se organizarán las tareas en Deitres S.A y se reservará tiempo con anticipación para poder disponer del tiempo mínimo necesario para realizar el proyecto en el tiempo estipulado.
   \begin{itemize}
 	\item Severidad (8): la severidad se mantiene.
 	\item Probabilidad de ocurrencia (3): disminuye la probabilidad de ocurrencia, ya que con una mejor gestión del tiempo y una planificación anticipada se reducirá el impacto de cambios en las prioridades.
 	\end{itemize}
-
 Riesgo 2:  el diseño del PCB debe ser revisado exhaustivamente mediante inspección y simulación. Se solicitará la revisión de un colaborador de Deitres S.A. y del director del proyecto antes de la fabricación del prototipo.
   \begin{itemize}
 	\item Severidad (9): la severidad se mantiene.
 	\item Probabilidad de ocurrencia (3):  disminuye la probabilidad de ocurrencia, dado que una revisión exhaustiva del diseño reducirá el riesgo de errores importantes.
 	\end{itemize}
-
-Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
+Riesgo 4: se adelantará lo máximo posible la compra de componentes.
   \begin{itemize}
 	\item Severidad (7): la severidad se mantiene.
 	\item Probabilidad de ocurrencia (2):  disminuye la probabilidad de ocurrencia debido a que al adelantar la fecha de adquisición de materiales se contará con mayor margen en caso de problemas de importación o falta de stock.
 	\end{itemize}
-
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
@@ -590,6 +586,7 @@ Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
 				\item Verificación: simulación de montaje en software 3D y revisión de dimensiones para garantizar que el PCB encaje en la carcasa y 	soporte el montaje en capas.
 				\item Validación: inspección en el ensamblaje físico del sistema en la carcasa genérica.
 				\end{itemize}
+\pagebreak
 			\item  El sistema debe integrar un sensor de efecto Hall para medir el consumo de corriente AC de la luminaria conectada.
 				\begin{itemize}
 				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del sensor.
@@ -635,6 +632,7 @@ Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
 				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del amplificador. 
 				\item Validación: inspección visual del amplificador en el PCB.
 				\end{itemize}
+\pagebreak
 			\item El sistema debe incluir un módulo GPS para obtener la posición geográfica de cada luminaria y sincronizar datos como la hora y ubicación precisa.
 				\begin{itemize}
 				\item Verificación: revisión del esquema eléctrico y mediciones sobre el PCB para asegurar la correcta conexión del módulo GPS. 
@@ -660,11 +658,10 @@ Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
 				\item Verificación: revisión del diseño de los circuitos de adaptación y medición de señales sobre el PCB.
 				\item Validación: inspección visual de los circuitos de adaptación en el PCB.
 				\end{itemize}
-			\item El sistema debe diseñarse de tal manera que algunos dispositivos CityLight puedan fabricarse sin los componentes físicos necesarios para las conexiones 
-				 a Internet, como los módulos de celular y Wi-Fi. Esto permitirá que se comuniquen exclusivamente a través de la red mesh, lo que contribuirá a reducir costos al no requerir conexión a Internet para todos los dispositivos.
+			\item El diseño del sistema debe permitir la fabricación de ciertos dispositivos CityLight sin la inclusión de componentes para la conexión a Internet, como los módulos de celular y Wi-Fi, junto con sus circuitos asociados. Esto permitirá que dichos dispositivos utilicen exclusivamente la red mesh para comunicarse con un gateway, lo que generará un ahorro significativo en costos.
 				\begin{itemize}
-				\item Verificación: : revisión del diseño y mediciones sobre el PCB.
-				\item Validación: inspección visual en el PCB.
+				\item Verificación: : revisión del esquema eléctrico y diseño del PCB para asegurar que los componentes de conexión a Internet (celular y Wi-Fi) puedan ser omitidos sin afectar el resto de los circuitos.
+				\item Validación:  inspección visual del ensamblaje de los dispositivos para confirmar la ausencia de los módulos de conexión a Internet. Se realizarán también pruebas funcionales para asegurar que la comunicación a través de la red mesh funcione correctamente sin dichos componentes.
 				\end{itemize}
 		\end{enumerate}
 
@@ -705,6 +702,7 @@ Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
 				\item Verificación: revisión del código fuente que procesa los datos del sensor fotosensible y simulación de datos para asegurar el correcto	procesamiento.
 				\item Validación: pruebas físicas donde se varíen las condiciones de iluminación y se valide la respuesta del sistema ante diferentes niveles de luz.
 				\end{itemize}
+\pagebreak
 			\item El sistema debe permitir el encendido automático de las luminarias según los niveles de luz ambiental detectados, o mediante comandos remotos.
 				\begin{itemize}
 				\item Verificación: revisión de la implementación del algoritmo de control y simulación del proceso de encendido automático y por comando.
@@ -742,22 +740,14 @@ Riesgo 4: : se adelantará lo máximo posible la compra de componentes.
 				\end{itemize}
 		\end{enumerate}
 \end{enumerate}
-
+\pagebreak
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+Durante el proceso de cierre del proyecto, el Ing. Juan Manuel Guariste evaluará si se han respetado los plazos de entrega y ejecución establecidos en el Plan de Proyecto. Este análisis incluirá la revisión del cumplimiento de los objetivos y requerimientos planteados inicialmente, asegurando que todos los aspectos críticos del proyecto se hayan completado satisfactoriamente.
 
-\begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:\\
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, los problemas que surgieron y cómo se solucionaron:\\
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:\\
-	  - Indicar esto y quién financiará los gastos correspondientes.
-\end{itemize}
+Además, el Ing. Juan Manuel Guariste realizará un análisis detallado de las técnicas y procedimientos utilizados a lo largo del desarrollo del proyecto. Se identificarán aquellas herramientas y enfoques que resultaron útiles, así como los que no aportaron valor o generaron dificultades. También se documentarán los problemas más significativos que surgieron y las soluciones implementadas para resolverlos. Toda esta información será incluida en la memoria técnica del proyecto, como parte del registro formal de los aprendizajes obtenidos.
 
-\end{consigna}
+Finalmente, el Ing. Juan Manuel Guariste organizará un acto de agradecimiento dirigido a todos los colaboradores e interesados en el proyecto. Este acto servirá para reconocer su esfuerzo y dedicación. Asimismo, se dejará constancia de los agradecimientos en la memoria del proyecto, como reconocimiento formal a quienes contribuyeron a su éxito.
 
 \end{document}
